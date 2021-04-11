@@ -1,0 +1,49 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{indentfirst}
+\usepackage[portuguese]{babel}
+\usepackage{geometry}
+\geometry{legalpaper, a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm}
+\setlength{\voffset}{-10mm}
+
+\newcommand{\tit}[1]{\textit{#1}}
+\newcommand{\tb}[1]{\textbf{#1}}
+
+\newcommand{\bitem}[1]{\tb{(\tit{#1})}}
+\newcommand{\iitem}[1]{(\tit{#1})}
+
+\newcommand{\oo}{orientação à objetos}
+\newcommand{\sw}{\tit{software}}
+
+\title{Testadores vs Desenvolvedores}
+\author{Wellington Espindula}
+\date{Setembro de 2020}
+
+\begin{document}
+    \maketitle
+    
+    Os trabalhos de desenvolvimento e testes de um sistemas envolvem habilidades e competências completamente diferentes - quase opostas -, muito embora essas habilidades são complementares no processo de desenvolvimento de um sistema. Muitas vezes, os desenvolvedores não entendem o quão difícil é testar um sistema, para isso é requisitada muita paciência e flexibilidade. É necessário um olhar detalhado e de um grande entendimento do todo. 
+    
+    Uma das primeiras diferenças entre desenvolvedores e testadores é na forma de conhecimento do projeto. \tb{Um bom testador é um diletante}, isto é, ele é alguém que se envolve em um estudo sem adquirir o domínio do tema. \tb{O conhecimento do testador é mais generalista}. Ele precisa saber algo sobre o domínio do usuário, bem como sobre sistemas computacionais. \tb{Testadores precisam ser bons em adquirir apenas conhecimento superficial}. Em contrapartida, \tb{desenvolvedores precisam ser bons em adquirir um conhecimento profundo sobre o domínio do problema, sobre as tecnologias sendo utilizadas, nas áreas técnicas, etc.} Isso não invalida intelectualmente o trabalho do testador ou mesmo do desenvolvedor, só são formas diferentes de adquirir conhecimento.
+    
+    Outra diferença entre desenvolvedores e testadores se dá na forma de modelar o comportamento do usuário. Enquanto \tb{desenvolvedores tendem a focar no design do sistema}, em como o sistema deverá funcionar e na análise de problemas, \tb{testadores focam em como o usuário, na prática, usa o sistema.} E, por este motivo, verifica-se a importância de testadores estarem próximos - ou conhecerem - os usuários reais do sistema (clientes). Assim, o trabalho dos testadores se dá em explorar o que pode dar errado durante a interação do usuário com o sistema (como erros de digitação, requisições sem sentido, entre outros erros pequenos na interação com o sistema). Além disso, testadores necessitam notar anomalias de uso, que pode não parecer um problema para um usuário, mas que não está de acordo com a forma com que um sistema deverá lidar com isso.
+    
+    \tb{Enquanto desenvolvedores são teóricos, testadores pensam de forma empírica}. Testadores precisam pensar sempre no que acontece e fazer diversas experimentações - assim como sempre tomar notas destas. Testadores são céticos ao passo que desenvolvedores são crentes. 
+    
+    \tb{Testadores são muito bons em tolerar o tédio e o trabalho repetitivo}. Do contrário, \tb{desenvolvedores normalmente detestam o trabalho repetitivo e tentam ao máximo automatizá-lo}. Dessa forma, uma habilidade de um bom testador é permanecer alerta e atento mesmo quando está aplicando o mesmo teste pela centésima vez.
+    
+    Por fim, \tb{uma habilidade muito importante para um testador é de lidar bem com situações conflituosas,} visto que seu trabalho é encontrar problemas, \tit{bugs}, e reportá-los o mais cedo possível. Dessa forma, são sempre encarregados de trazer as más notícias e estas não são sempre bem recebidas. Logo, a habilidade de contornar as situações de conflituo, mesmo não sendo técnica, é de extrema importância. 
+    
+    Assim, nota-se o quão importante o papel do testador, que tem suas habilidades e competências específicas, sendo assim, não é uma boa ideia encarregar essa tarefa para desenvolvedores júnior ou pessoas que não tenham pretensão de seguir essa carreira. Ademais, é necessário o respeito e o trabalho mútuo de desenvolvedores e testadores a fim de tornar o processo de desenvolvimento de \sw \ mais produtivo e bem-sucedido.
+    
+    
+    
+    
+    
+    % Appreciating differences is critical for productive teams. Different approaches aid in finding solutions, and mutual respect dramatically improves group problem solving. Testers should not be judged according to developer criteria. Empirical thinking is an asset rather than an inability to think theoretically. A jack-of-all-trades should be appreciated rather than criticized for being a master of none. Many of the skills and attitudes that good testers demonstrate contrast with what we often look for in developers. When hiring testers, look for, and develop, these skills. Don’t just settle for junior developers. Productive teams with both developers and testers need both skill sets. Just as developers have defined career paths, so should testers. To remain competitive in this industry, nurture both the skills of developers and the different but equally important skills of testers.
+
+\end{document}

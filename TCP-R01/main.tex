@@ -1,0 +1,56 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{legalpaper, a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm}
+\setlength{\voffset}{-10mm}
+
+
+
+\title{Qualidade de Sofware}
+\author{Wellington Espindula}
+\date{Março de 2020}
+
+\begin{document}
+    \maketitle
+    
+    O presente capítulo, \textit{Software Quality} discute sobre como qualificar um \textit{software}. Desse modo, o autor traça as características positivas em um \textit{software}, enquadrando-as em dois grupos: \textbf{(\textit{i}) fatores externos:} são fatores que consistem na qualidade de uso que \textbf{impactam diretamente na experiência dos usuários} - tanto os usuários final como os usuários que contratam o \textit{sofware} - tais como velocidade, usabilidade, confiabilidade; \textbf{(\textit{ii}) fatores internos:} estes são fatores que \textbf{são percebidos por desenvolvedores}, fatores que melhoram até o ciclo de vida do \textit{software}, tais como modularidade, legibilidade. Por mais que, no fim das contas, as qualidades internas não importem tanto, faz-se necessário o emprego de boas técnicas no desenvolvimento para que, mesmo que invisíveis, essas qualidades garantam uma consistência maior nas questões visíveis (qualidades externas). \\
+    
+    \title{\textbf{Das qualidades externas:}}
+        \begin{enumerate}  
+            \item \textbf{Corretude:} Qualidade primária, afinal, sobre tudo, o \textit{software} necessita realizar as tarefas das quais foi designado. Normalmente, os métodos pra garantir a corretude são condicionais. Isto é, iremos assumir módulos/camadas/bibliotecas de \textit{software}, para assim, testá-los individualmente ao invés de tentar testar tudo de uma vez só. Uma forma de verificar a corretude que o texto indica é através de chamada e afirmação (\textit{typing and assertions}) presentes nos chamados Testes Unitários - que consistem em testar, por exemplo, métodos com certos valores de entrada e verificar se a saída retorna valores corretos.
+            
+            \item \textbf{Robustez:} Quase uma extensão da corretude, robustez trata mais sobre como o 
+            \textit{software} se comporta em situações inesperadas - dada as especificações. Um exemplo de robustez é o tratamento de exceções que possam causar falhas no programa.
+            
+            \item \textbf{Extensibilidade:} Fundamental para a construção de um \textit{software} é a facilidade de manutenção e de ampliá-lo conforme o aumento das demandas e necessidades. Segundo Heráclito, tudo está em movimento - em mudança -, portanto não pode-se esperar que um \textit{software} se mantenha igual ao longo do tempo com as mudanças dos usuários, demandas, regras de negócio, entre outros fatores e cofatores. Deste modo, devemos planejar e implementar um \textit{software} que foque na simplicidade do design e na descentralização (focar em desenvolvimento de módulos o mais autônomos possíveis entre si).  
+            
+            \item \textbf{Reusabilidade:} A fim de evitarmos reinventar a roda a cada vez que formos usá-la, a reusabilidade se reafirma como uma qualidade importante, dado que, se já resolvemos um problema anteriormente, não precisamos resolvê-lo novamente. Logo, focando na reusabilidade de código, escreve-se menos código, podendo delegar esse tempo a fim de aprimorarmos outras das qualidades de \textit{software} aqui listadas (e.g. corretude).
+            
+            \item \textbf{Compatibilidade:} Como não desenvolvemos sistemas separado de tudo e todos, devemos nos preocupar com a compatibilidade entre os diversos módulos do nosso sistema, nisso devemos contar com padrões como de formato de arquivos, de estrutura de dados, de protocolos de acesso entre as entidades do \textit{software} - por exemplo, o uso da API REST usando XML ou JSON na construção de \textit{webservices} para a comunicação cliente/servidor - e até de interfaces (nesse caso, cada plataforma contém paradigmas e orientações próprias).
+            
+            \item \textbf{Eficiência:} Embora a preocupação com eficiência muitas vezes seja exaustiva (Dr. Milissegundo), essa não deve ser a maior das preocupações em termos de produção de \textit{software}, dado que o poder de processamento, basicamente, duplica a cada ano. Isso não implicada que não deve haver preocupação alguma com o desempenho do sistema, mas que, de forma geral, devemos nos atermos à complexidade dos algoritmos utilizados e aos maiores gargalos de performance do sistemas - por exemplo, em um sistema que faz muito uso de disco em consultas ao banco que são pertinentes, pode-se usar um método de \textit{caching} a fim de utilizar a memória RAM, que é de rápido acesso, em detrimento ao disco rígido. Ademais, é importante lembrar que a eficiência (ou a falta dela) pode afetar a corretude, afinal ninguém quer esperar 24h para processar a previsão do tempo do próximo dia.
+            
+            \item \textbf{Portabilidade:} Faz-se importante, em diversos contextos, fazer um \textit{software} que seja portável a diferentes plataformas, isto é, \textit{softwares} e \textit{hardwares}.
+            
+            \item \textbf{Usabilidade:} Uma das tarefas mais difíceis no design de \textit{software}, desenhar interfaces que sejam intuitivas, claras e de fácil aprendizado. Desse modo, faz-se importante conhecer o usuário alvo, afinal é muito diferente desenhar um \textit{software} que será utilizado por desenvolvedor em um computador pessoal - como, por exemplo, o sistema de versionamento Git - do que outro que será utilizado por um usuário doméstico em um dispositivo móvel. De qualquer forma, ressalto o que foi dito no texto: "Não podemos fingir conhecer o usuário, não o conhecemos". Ressalto esse trecho pois, \textbf{frequentemente}, esquecemos de tentarmos nos colocar no lugar do usuário e o imaginamos como dotados de super capacidade de entender algo que apenas faz sentido para nós enquanto desenvolvedores. Ademais, nesse mesmo ponto, torna-se relevante, também, lembrar que existem usuários deficientes visuais, auditivos, intelectuais, etc. Portanto, se nosso \textit{software} tem pretensão de ser inclusivo 
+           à pessoas deficientes - o que grande parte dos \textit{softwares} comerciais de uso doméstico deveriam ter -, faz-se necessária a preocupação, planejamento e implementação de uma interface que seja acessível 
+           à deficientes - por exemplo, criação uma interface gráfica que possibilite e facilite o uso de leitores de tela para usuários deficientes visuais. 
+            
+            \item \textbf{Funcionalidade:} Qualidade de acrescer novas funcionalidades em um \textit{software}. Ao mesmo tempo em que é bom oferecer novas funcionalidades - \textit{features} - em um sistema, afinal os usuários tendem a querer sempre mais funcionalidades, adicioná-las pode ser custoso ao projeto interno. Para isso, é possível sempre tentar pensar no sistema como um todo e tentar ser consistente em relação às demais qualidades de \textit{software} - por exemplo, extensibilidade ou mesmo usabilidade - a fim de mantermos a qualidade geral do sistema.
+            
+            \item \textbf{Prontidão:} Habilidade de um \textit{software} chegar no momento certo, isto é, antes ou quando os usuários o desejarem.
+        \end{enumerate}
+        
+    Além destes itens, vale lembrar também da verificabilidade - habilidade de testar dados, detectar erros e falhas -, da integridade - proteção do sistema contra acesso não autorizado - a facilidade de reparar defeitos e o custo do sistema. 
+        
+    Por fim, outro quesito que qualifica um \textit{software} é a \textbf{documentação}, muito embora não seja um fator por si só, mas, sim, uma consequência das qualidades já listadas. Existem três tipos de documentação: externa - que auxilia o usuário a entender o sistema e como usá-lo de forma conveniente, sendo consequência da usabilidade -, interna - que auxilia os desenvolvedor a entenderem a estrutura e implementação do sistema e atua como consequência da extensibilidade - e a documentação da interface de módulo - que ajuda os desenvolvedores a entender as funções de um módulo sem ter que lidar com sua implementação, e é consequência da reusabilidade e extensibilidade. 
+        
+    Em contrapartida a tudo que foi mencionado até então, sabe-se que, no momento de desenvolvimento, não existe viabilidade de cumprir com perfeição todas as qualidades listadas, afinal muitas das qualidades podem conflitar entre si. No texto, cita-se o exemplo de como garantir a integridade do sistema sem comprometer a usabilidade ou mesmo como garantir a portabilidade sem comprometer o desempenho. Dessa forma, o projetista deve, então, escolher quais serão as qualidades priorizadas em relação ao \textit{software} desejado. Todavia, a corretude é a qualidade que necessariamente deve ser cumprida.
+    
+    Finalmente, a última - e uma das mais importante qualidades de \textit{software} - é a \textbf{manutenibilidade}, que é a qualidade de um \textit{software} de ser mantido. Sabe-se que, aproximadamente, 70\% do trabalho de desenvolvimento se dá na manutenção do mesmo, o que envolve mudança de requisitos, mudança no formado de dados, correções de emergência, correções de rotina, etc. Em contrapartida, a maior parte dos custos de manutenção são utilizados em modificações de extensão do sistema, o que pode ser facilmente resolvido em um \textit{software} que tenha boa extensibilidade desde seu projeto. Em suma, um projeto de \textit{software} que garanta corretude, robustez, extensibilidade e reusabilidade desde o projeto do sistema tende a ter menores complicações ao longo da manutenção o que pode levar ao ampliamento da vida-útil do \textit{software}.
+
+\end{document}

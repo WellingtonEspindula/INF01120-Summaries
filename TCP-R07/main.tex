@@ -1,0 +1,115 @@
+\usepackage[utf8]{inputenc}
+\documentclass[12pt, a4paper]{article}
+\usepackage{amssymb}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[portuguese]{babel}
+\usepackage{geometry}
+\geometry{legalpaper, a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm}
+\setlength{\voffset}{-10mm}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\newcommand{\tit}[1]{\textit{#1}}
+\newcommand{\tb}[1]{\textbf{#1}}
+\newcommand{\tbi}[1]{\textbf{\textit{#1}}}
+
+\newcommand{\bitem}[1]{\tb{(\tit{#1})}}
+\newcommand{\iitem}[1]{(\tit{#1})}
+
+\newcommand{\oo}{orientação à objetos}
+\newcommand{\sw}{\tit{software}}
+
+\newcommand{\quotes}[1]{``#1''}
+
+\title{Refatoração}
+\author{Wellington Espindula}
+\date{Outubro de 2020}
+
+\begin{document}
+    \maketitle
+   
+    A refatoração é o processo de a aprimorar a estrutura interna do código de forma a não alterar as características externas de um \sw. Dessa forma, a refatoração é uma forma de limpar o código tomando os devidos cuidados para não criar novos \tit{bugs} com passos pequenos e simples.
+    O capítulo 1 do livro \tit{Refactoring: Improving the Design of Existing Code} parte de um exemplo com a finalidade de refatorá-lo usando técnicas como \tbi{Extract Method}, \tbi{Move Method} e \tbi{Replace Conditional with Polymorfism} em diversos pequenos passos, seguindo um ritmo de teste, modificação, teste, e assim por diante. O exemplo do código inicial é de um sistema simples de aluguéis de filmes, embora tal sistema seja simples, tende-se a ter a ideia de que a refatoração pode não ser tão importante - tendo em vista que as modificações no \sw \ não envolveriam tantas mudanças -, mas, ao passo que se o código fizesse parte de um sistema grande, a refatoração faria-se essencial. 
+    
+    O \sw \ do exemplo é dado por três classes inicias \tbi{Movie} (contém um \tit{priceCode}), \tbi{Rental} (contém \tit{daysRented}) e \tbi{Costumer} (contém um método \tit{statement}, que produz uma \tit{string} com os resultados). Porém toda a lógica de processamento e saída de dados está contida no método \tit{statement}, em um método grande e de difícil legibilidade. De forma sucinta, esse método, em seu estado inicial, checa os aluguéis, calcula os preços de alugueis baseado nos tipos de filmes e a pontuação do cliente e ainda gera uma \tit{string} com cabeçalhos e rodapés de retorno. Em primeiro momento, pode-se ver que existe uma sobrecarga de funções no método, que ele tem difícil legibilidade e que ele é pouco extensível - dado que uma inclusão de tipo de filme ou até para gerar um HTML de saída, ao invés do texto simples, já adicionam várias alterações estruturais. Aqui é dada a primeira dica do capítulo: \quotes{Quando se quer adicionar uma nova funcionalidade a um programa, e o programa não está estruturado de maneira conveniente para isto, primeiro refatore o programa para tornar essa tarefa mais fácil e então adicione essa funcionalidade}.
+        % When you find you have to add a feature to a program, and the program's code is not structured in a convenient way to add the feature, first refactor the program to make it easy to add the feature, then add the feature.
+    
+    O primeiro passo dado é a criação de um conjunto sólido de testes, para evitar criar novos \tit{bugs} após a refatoração. Como a refatoração é dada em pequenas modificações, os testes vão ser também um facilitador na hora de verificar-se por erros e encontrá-los. O segundo passo importante, que foi usado no exemplo, é a decomposição e redistribuição de um método, como o método do exemplo era um método longo, a primeira parte foi realizar o \tit{Extract Method} - isto é, pegar um pedaço de código do método original e transformá-lo em um método à parte - do trecho de código que calculava o valor de um aluguel. Junto à isso também houve uma renomeação de variáveis, visando a melhoria na legibilidade. Aqui é dada a segunda dica: \quotes{Qualquer um consegue escrever códigos que um computador entende, mas bons programadores escrevem códigos que humanos conseguem entender}.
+        % Any fool can write code that a computer can understand. Good programmers write code that humans can understand
+    
+    Logo após, utilizou-se o \tit{Move Method} para mover o método que calcula o valor do aluguel para a classe \tit{Rent}. Também houve a substituição da variável temporária por uma chamada a fim de remover variáveis redundantes/desnecessárias. Novamente, ocorreu um novo \tit{Extract Method} extraindo a parte do cálculo de pontuação do cliente através dos aluguéis e esse foi extraído diretamente para a classe \tit{Rent}). Após remoções de redundância, utilizou-se o \tit{Replace Conditional with Polymorfism} - ou seja, remover condicionais pelo uso de polimorfismo - para tentar melhorar a forma como se lida com o cálculo de aluguel através de um tipo de filme (inicialmente isso era tratado através de condicionais). Nisso foi criada uma classe adicional, chamada \tit{Price}, com uma função abstrata \tit{getCharge(days)} e com uma função \tit{getFrequentRenterPoints(days)}, e então a classe \tit{Movie} passou a deixar de ter um \tit{priceCode} e passou a conter uma instância de \tit{Price}. A classe \tit{Price}, por sua vez, passa a ter filhos conforme a taxação de cada tipo de filme (\tit{ChildrensPrice}, \tit{RegularPrice} e \tit{NewReleasePrice}) que fazem sobrecarga do método \tit{getCharge(days)}. Portanto, quando se deseja adicionar um novo tipo de taxação para um filme, é só adicionar uma nova especialização de \tit{Price}, sem que tenha que se modificar todos os condicionais que verificam o \tit{priceCode} para o mesmo cálculo.
+    
+    Também, nesses últimos passos de refatoração, o cálculo de pontos de um filme foi passado também para a classe \tit{Price} no método \tit{getFrequentRenterPoints(days)}, que irá retornar um valor por padrão, mas, conforme um novo tipo de filme for adicionado e esse tiver uma pontuação diferente da padrão, então é, novamente, só adicionar uma especialização de \tit{Price} com sobrecarga no método \tit{getFrequentRenterPoints(days)}.
+    
+    Por fim, através dos exemplos das pequenas refatorações - nesse texto, por ser um resumo, tentei simplificar e aglutinar as modificações para não torná-lo tão exaustivo - foi possível ver de forma clara como métodos simples (\tit{Extract Method}, \tit{Move Method}, \tit{Replace Conditional with Polymorfism}, \tit{Replace Temp with Query}) através de passos muito pequenos junto com compilação e testes, dá para se transformar um código grande, difícil de ler e pouco extensível em um código legível, subdividido em módulos simples e extensível.
+    
+    
+    
+    % O código de exemplo é dado abaixo:
+    
+    % \begin{lstlisting}
+    %     public String statement() { 
+    %         double totalAmount = 0; 
+    %         int frequentRenterPoints = 0;
+    %         Enumeration rentals = _rentals.elements(); 
+    %         String result = "Rental Record for " + getName() + "\n"; 
+            
+    %         while (rentals.hasMoreElements()) { 
+    %             double thisAmount = 0;
+    %             Rental each = (Rental) rentals.nextElement();
+    %             //determine amounts for each line 
+    %             switch (each.getMovie().getPriceCode()) { 
+    %                 case Movie.REGULAR: 
+    %                     thisAmount += 2;
+    %                     if (each.getDaysRented() > 2)
+    %                     thisAmount += (each.getDaysRented() - 2) * 1.5; 
+    %                     break; 
+    %                 case Movie.NEW_RELEASE:
+    %                     thisAmount += each.getDaysRented() * 3; 
+    %                     break;
+    %                 case Movie.CHILDRENS: 
+    %                     thisAmount += 1.5;
+    %                     if (each.getDaysRented() > 3) 
+    %                     thisAmount += (each.getDaysRented() - 3) * 1.5;
+    %                     break;
+    %         }
+    %         // add frequent renter points 
+    %         frequentRenterPoints ++;
+    %         // add bonus for a two day new release rental 
+    %         if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) && each.getDaysRented() > 1)                     frequentRenterPoints ++;
+            
+    %         //show figures for this rental 
+    %         result += "\t" + each.getMovie().getTitle()+ "\t" + String.valueOf(thisAmount) + "\n"; 
+    %         totalAmount += thisAmount;
+    %     }
+    %     //add footer lines 
+    %     result += "Amount owed is " + String.valueOf(totalAmount) + "\n"; result += "You earned " + String.valueOf(frequentRenterPoints) +" frequent renter points"; 
+    %     return result;
+    % }
+    
+    % \end{lstlisting}
+    
+\end{document}

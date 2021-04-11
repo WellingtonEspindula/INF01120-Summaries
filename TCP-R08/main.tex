@@ -1,0 +1,69 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[portuguese]{babel}
+\usepackage{geometry}
+\geometry{legalpaper, a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm}
+\setlength{\voffset}{-10mm}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\newcommand{\tit}[1]{\textit{#1}}
+\newcommand{\tb}[1]{\textbf{#1}}
+\newcommand{\tbi}[1]{\textbf{\textit{#1}}}
+
+\newcommand{\bitem}[1]{\tb{(\tit{#1})}}
+\newcommand{\iitem}[1]{(\tit{#1})}
+
+\newcommand{\oo}{orientação à objetos}
+\newcommand{\sw}{\tit{software}}
+
+\newcommand{\quotes}[1]{``#1''}
+
+\title{Ouvindo os desenvolvedores de início de carreira}
+\author{Wellington Espindula}
+\date{Outubro de 2020}
+
+\begin{document}
+    \maketitle
+    O artigo \tit{Listening to Early Career Software Developers} tem por objetivo analisar quais são os maiores \tit{gaps} dos cursos de Ciência da Computação em relação ao preparo dos profissionais ao ingressarem no mercado de trabalho, tendo em vista que pesquisas previamente conduzidas apontavam que os desenvolvedores recém formados encontram certas dificuldades no início de suas carreiras profissionais dada uma diferença significativa entre as experiências acadêmicas e o que lhes era esperado em seus empregos. Dessa forma, os autores ouviram as opiniões de 20 desenvolvedores iniciantes e as analisaram de forma a identificar os temas específicos mais comuns sobre esses \tit{gaps} e os organizaram em um \tit{framework}, bem como trouxeram relatos dos desenvolvedores e algumas reflexões sobre o porquê dessas lacunas ainda persistirem.
+    
+    Dito isso, os 6 temas comuns agrupados através das pesquisas bibliográficas e das pesquisas qualitativas com os entrevistados foram:
+    \begin{itemize}
+        \item \tb{Diferenças no Escopo: } Durante a graduação, grande parte dos trabalhos/projetos tem enunciados, especificações e critérios muito bem definidos. Nos empregos, os desenvolvedores vivenciaram uma realidade na qual existiam especificações vagas, abertas e sujeita à alterações.
+        \item \tb{Períodos curtos vs. longos: } O tempo de vida dos códigos na graduação tendem a durar até a data de entrega das avaliações. Mas na indústria, o tempo de vida de um código tende a ser de anos e sempre há de se lidar com legados de certos códigos e interfaces.
+        \item \tb{Trabalho individual vs. Trabalho em grandes equipes: } Nos projetos de graduação tende-se a valorizar mais os trabalhos individuais que os em equipe, porém saber trabalhar em equipe é um valor muito importante na qualificação de um profissional.
+        \item \tb{Aprendizado vs. Necessidade de Usuários reais: } Os educadores não costumam dar muito peso em ensinar os alunos a como conduzir entrevistas com usuários, afinal muitos dos objetivos dos projetos de graduação são focar no aprendizado do aluno de uma certa área.
+        \item \tb{Ad-Hoc vs. Professional: } Em desenvolvimento profissional, existem habilidades que são pouco mencionadas/trabalhadas na graduação, tais como versionamento de código, métodos ágeis e testagem.
+        \item \tb{Pequenos vs. Grandes bases de código: } Na graduação tende-se a escrever muitos programas \tit{stand-alone}, mas na indústria tende-se a gastar muito mais tempo adicionando novas funcionalidades para grandes bases de códigos. Nisso faz-se a importância de ter um bom estilo de código, saber ler código, saber usar bibliotecas e saber refatorar.
+    \end{itemize}
+    
+    Ademais, durante as entrevistas perguntou-se sobre os estágios, e notou-se que, muito embora os participantes, majoritariamente, tenham realizado estágios e essa tenha sido a experiência mais próxima deles com o mercado de trabalho, ainda não é uma solução completa para se aprender a lidar com os desafios reais nos empregos.
+    
+    Por fim, os autores propuseram três hipóteses para os obstáculos em relação as mudanças nas grades: \iitem{i} Consciência do problema; \iitem{ii} Familiaridade e \iitem{iii} Dificuldade de criar soluções autênticas que possam desenvolver essas experiências em contextos acadêmicos em escala.
+    
+\end{document}

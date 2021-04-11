@@ -1,0 +1,47 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{legalpaper, a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm}
+\setlength{\voffset}{-10mm}
+
+
+
+\title{Polimorfismo}
+\author{Wellington Espindula}
+\date{Setembro de 2020}
+
+\begin{document}
+    \maketitle
+    
+    O polimorfismo é uma técnica da orientação à objetos que torna possível projetar e implementar sistemas com maior extensibilidade de uma forma muito mais simples. 
+    
+%   With polymorphism, it is possible to design and implement systems that are more easily extensible. Programs can be written to process even objects of types that do not exist when the program is under development.
+% Polymorphism enables programmers to deal in generalities and let the execution-time environment handle the specifics. Programmers can command objects to behave in manners appropriate to those objects, without knowing the types of the objects (as long as the objects belong to the same inheritance hierarchy).
+% Polymorphism promotes extensibility: Software that invokes polymorphic behavior is independent of the object types to which messages are sent. New object types that can respond to existing method calls can be incorporated into a system without requiring modification of the base system. Only client code that instantiates new objects must be modified to accommodate new types
+% We now continue our study of object-oriented programming by explaining and demonstrating polymorphism with inheritance hierarchies. Polymorphism enables us to "program in the general" rather than "program in the specific." In particular, polymorphism enables us to write programs that process objects that share the same superclass in a class hierarchy as if they are all objects of the superclass.
+% With polymorphism, we can design and implement systems that are easily extensiblenew classes can be added with little or no modification to the general portions of the program, as long as the new classes are part of the inheritance hierarchy that the program processes generically
+% There are many situations in which it is useful to declare abstract classes for which the programmer never intends to create objects. These are used only as superclasses, so we sometimes refer to them as abstract superclasses. You cannot instantiate objects of an abstract class.
+% ? Classes from which objects can be created are called concrete classes. ?
+% A class must be declared abstract if one or more of its methods are abstract. An abstract method is one with keyword abstract to the left of the return type in its declaration.
+% If a class extends a class with an abstract method and does not provide a concrete implementation of that method, then that method remains abstract in the subclass. Consequently, the subclass is also an abstract class and must be declared abstract.
+% Java enables polymorphismthe ability for objects of different classes related by inheritance or interface implementation to respond differently to the same method call.
+% When a request is made through a superclass reference to a subclass object to use an abstract method, Java executes the implemented version of the method found in the subclass.
+% Although we cannot instantiate objects of abstract classes, we can declare variables of abstract class types. Such variables can be used to reference subclass objects.
+% Due to dynamic binding (also called late binding), the specific type of a subclass object need not be known at compile time for a method call off a superclass variable to be compiled. At execution time, the correct subclass version of the method is called, based on the type of the reference stored in the superclass variable.
+% Operator instanceof checks the type of the object to which its left operand refers and determines whether this type has an is-a relationship with the type specified as its right operand. If the two have an is-a relationship, the instanceof expression is true. If not, the instanceof expression is false.
+% Every object in Java knows its own class and can access this information through method getClass, which all classes inherit from class Object. Method getClass returns an object of type Class (package java.lang), which contains information about the object's type that can be accessed using Class's public methods. Class method getName, for example, returns the name of the class. 
+    
+    
+% An interface declaration begins with the keyword interface and contains a set of public abstract methods. Interfaces may also contain public static final fields.
+% To use an interface, a class must specify that it implements the interface and must either declare every method in the interface with the signatures specified in the interface declaration or be declared abstract.
+% An interface is typically used when disparate (i.e., unrelated) classes need to provide common functionality (i.e., methods) or use common constants.
+% ? An interface is often used in place of an abstract class when there is no default implementation to inherit.
+% When a class implements an interface, it establishes an is-a relationship with the interface type, as do all its subclasses.
+% To implement more than one interface, simply provide a comma-separated list of interface names after keyword implements in the class declaration.
+    
+    
+\end{document}

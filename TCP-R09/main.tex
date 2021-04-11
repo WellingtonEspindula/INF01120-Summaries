@@ -1,0 +1,69 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[portuguese]{babel}
+\usepackage{geometry}
+\geometry{legalpaper, a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm}
+\setlength{\voffset}{-10mm}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\newcommand{\tit}[1]{\textit{#1}}
+\newcommand{\tb}[1]{\textbf{#1}}
+\newcommand{\tbi}[1]{\textbf{\textit{#1}}}
+
+\newcommand{\bitem}[2]{ \tb{(\tit{#1}) {#2}}}
+\newcommand{\iitem}[1]{(\tit{#1})}
+
+\newcommand{\oo}{orientação à objetos}
+\newcommand{\sw}{\tit{software}}
+\newcommand{\ssw}{\tit{software} }
+
+\newcommand{\quotes}[1]{``#1''}
+
+\title{Modelos de Software}
+\author{Wellington Espindula}
+\date{Outubro de 2020}
+
+\begin{document}
+    \maketitle
+   
+    Modelos de \ssw surgiram com o \tb{intuito de preencher a lacuna entre o levantamento de requisitos e o processo de desenvolvimento.} Diferente das outras engenharias que usam modelos matemáticos para fazer previsões físicas e simular propriedades, os modelos de engenharia de \ssw não tem a mesma efetividade dado que as abstrações de complexidade no processo de construção de \ssw podem descartam parte da complexidade essencial ao sistema. Além disso, modelos de \ssw não são formalismos matemáticos mas, sim, representações gráficas - muito embora se possa usar métodos formais/especificações formais para analisar um \sw, estes métodos não evoluíram muito e seu uso é extremamente restrito.
+    
+    Tendo em vista a necessidade de construir modelos gráficos para modelagem de \sw, surgiu a UML (\tit{Unified Modeling Language}) com a intenção de integrar e unificar modelos previamente existentes em uma forma padrão de modelagem de \sw. A UML pode ser usado de diferentes formas em diferentes contextos: \bitem{i}{UML como \tit{blueprint}} - Uso como plantas técnicas do sistema após o levantamento de requisitos; \bitem{ii}{UML como linguagem de programação} - A ideia de conseguir usar UML para gerar código, nisso surge também a ideia de Desenvolvimento Dirigido por Modelos; \bitem{iii}{UML como esboço} - Uso com a finalidade de discutir e analisar alternativas de design do \ssw ou mesmo quando se necessita explicar e discutir o código fonte já existente.
+    
+    A UML apresenta diferentes formas de se representar o \ssw através de diagramas. Assim, existem dois tipos de diagramas: \bitem{i}{Diagramas Estáticos (ou Estruturais)}, cujo objetivo é modelar a estrutura e organização de um sistema (por exemplo, Diagramas de Classe ou Diagramas de Pacotes); \bitem{ii}{Diagramas Dinâmicos (ou Comportamentais)} que modelam eventos de execução do sistema (por exemplo, Diagramas de Sequência e Diagrama de Atividades).
+    
+    O \tb{Diagrama de Classes é um diagrama estático que representa graficamente as classes de um sistema, com seus atributos e métodos, e a relação entre essas}. Uma classe é representada por um retângulo (com nome em negrito) subdividido em três partes: nome, atributos e métodos. Os atributos e métodos costumam trazer informações de modificadores de acesso assinalados com caracteres como \quotes{-} (atributo/método privado), \quotes{+}  (atributo/método público) e \quotes{\#} (atributo/método protegido). Se usam setas entre as classes para representar as relações entre essas. Setas pretas com extremidade preenchida significam uma associação, isto é, que uma classe A possui um atributo do tipo B. Nesse caso a seta é de A para B. É comum, na associação, ter o nome do atributo com seu modificador de acesso junto à seta, bem como informações de cardinalidade podem estar presentes informando a multiplicidade da relação. Existem também as associações bidirecionais, que são representadas com setas pretas com duas extremidades preenchidas. Esse é o caso de associações em que ambas as classes possuem atributos de relação, A possui um atributo do tipo B e B possui um atributo do tipo A. A herança é representada através de setas pretas com extremidade não preenchida. E, por fim, as relações de dependência são representadas por setas tracejadas. As relações de dependência são relações na qual, por exemplo, A não tem atributo do tipo B, mas usa instância de B como variável local ou como parâmetro em métodos.
+    
+    O \tb{Diagrama de Pacotes descreve a relação entre pacotes e suas dependências}. Um pacote é representado por um retângulo especial (com um detalhe em forma de trapézio na sua parte de cima, representação que lembra uma pasta em um sistema de arquivos) com o nome do pacote em negrito. No diagrama de pacotes só existem setas tracejadas que representam qualquer tipo de relacionamento (associação, herança ou dependência simples). Sendo assim, é um diagrama de mais alto nível com maior grau de abstração.
+    
+    O \tb{Diagrama de Sequência}, por sua vez, \tb{é um diagrama dinâmico que visa representar a execução de um sistema informando a sequência de métodos dos objetos chamados dado um cenário de uso do \sw}. Diagramas de sequência tem objetos representados em forma de retângulo com seus nomes. Abaixo de um objeto existe uma linha tracejada que representa que o objeto está inativo naquele momento. E quando o objeto está ativo, esta linha fica cheia e ganha um formado retangular. O início da chamada é indicado por uma seta horizontal com o nome do método e o retorno é indicado por uma linha tracejada (a ausência dessa linha significa que o retorno é \tit{void} ou que o objeto de retorno não é relevante para o diagrama). Existe ainda o caso em que o objeto chama um método de si mesmo, nesse caso ele é representado por um novo retângulo que sai do retângulo original da ativação do objeto.
+    
+    Por fim, o \tb{Diagrama de Atividades representa, em alto nível, um processo ou fluxo de execução}. Representa ações através de retângulos. Existem elementos de controle de execução. O início é representado por um nodo. Existem decisões que representam possibilidades de fluxo. Existem merges que ocorrem quando dois possíveis fluxos se juntam. De forma similar, existem os forks e joins que são \quotes{versões concorrentes} das decisões e merges. E, finalmente, existe o nodo final que representa o fluxo de saída desse diagrama. Esse diagrama se assemelha muito à fluxogramas mas suporta concorrência.
+    
+\end{document}

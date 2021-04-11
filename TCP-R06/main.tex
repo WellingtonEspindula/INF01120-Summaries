@@ -1,0 +1,68 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{indentfirst}
+\usepackage[portuguese]{babel}
+\usepackage{geometry}
+\geometry{legalpaper, a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm}
+\setlength{\voffset}{-10mm}
+
+\newcommand{\tit}[1]{\textit{#1}}
+\newcommand{\tb}[1]{\textbf{#1}}
+
+\newcommand{\bitem}[1]{\tb{(\tit{#1})}}
+\newcommand{\iitem}[1]{(\tit{#1})}
+
+\newcommand{\oo}{orientação à objetos}
+\newcommand{\sw}{\tit{software}}
+
+\newcommand{\quotes}[1]{``#1''}
+
+\title{Testes do Desenvolvedor}
+\author{Wellington Espindula}
+\date{Outubro de 2020}
+
+\begin{document}
+    \maketitle
+    
+    Testagem é uma das formas mais populares atividades de aprimorar a qualidade de um \sw, sendo recomendada tanto por pesquisas acadêmicas, pesquisa industrial e também por experiências comerciais. Existem inúmeras formas de se testar um \sw: \iitem{i} Testes unitários (Testes de execução classes, métodos/funções isolados); \iitem{ii} Testes de Componentes (Testes de classe, pacote, programa pequeno, etc); \iitem{iii} Testes integrados (Testes de integração de diferentes componentes do \sw); \iitem{iv} Testes de Regressão (Repetição dos testes executados anteriormente com o propósito de encontrar \tit{bugs} nos processos que o sistema já havia sido bem-sucedido); \iitem{v} Testes de Sistema (Execução do \sw \ na sua configuração final, o que inclui integração com os \tit{softwares} e \tit{hardwares} do sistema).
+    
+    Desses testes citados acima, os que normalmente envolvem o desenvolvedor são os testes unitários - esses são os que o desenvolvedor deve fazer -, de componentes e de integração. O processo de testagem de um \sw \ pode ser dividido em duas categorias: Testes \tb{Black Box} - esses são testes em que não se consegue \quotes{enxergar} a implementação do item a ser testado; e testes \tb{White box} - testes cujo o funcionamento interno é conhecido pelo testador.
+    
+    % Papel do Desenvolvedor
+   Dessa forma, faz-se importante os testes do desenvolvedor, que tipicamente encontra menos de 60\% dos erros apresentados. A testagem tende a ser uma atividade difícil para os desenvolvedores por diversos motivos: o objetivo de testes é o contrário do objetivo das atividades de desenvolvimento, isto é, o objetivo dos testes é, sim, de quebrar o \sw. Além disso, testes nunca provam a falta de erros. Testagem, por si só, não melhora a qualidade de \sw, pelo contrário, eles podem ser utilizados como forma de medir a qualidade de um \sw \ (no caso até como uma forma de medir a confiabilidade de um sistema). Testagem requer que o desenvolvedor assuma que ele erra e tentar, assim, buscar os erros no código. Entretanto, os resultados de testes podem ser muito úteis não somente para medir a confiabilidade de um sistema, mas também para guiar as correções necessárias. Ademais, testar uma rotina ou classe por vez facilita na hora de depurar o código, dado que os módulos já foram previamente testados, então quando surgir um novo módulo, sabe-se que o erro tende a ser neste ou na integração com os demais módulos.
+   
+    % Abordagem recomendada para testes de desenvolvedor
+    Algumas abordagens são recomendadas ao desenvolvedor na hora de realizar testes. Tais são: Testar cada requisito relevante para se certificar que estes foram implementados. Testar cada parte relevante preocupante do \tit{design} para certificar-se que o \tit{design} foi implementado. Usar os testes básicos para adicionar casos de testes detalhados para os testes de requisitos e de \tit{design}. Vale o adendo aqui que é muito importante planejar os casos de testes antes de escrever o código, visto que o esforço para se planejar os casos de testes tende a ser menor antes da implementação, quando se escreve os casos de testes antes da implementação é mais fácil de detectar erros antes e os corrigir, planejar os casos de teste força o pensamento sobre os requisitos e o \tit{design} antes da implementação (o que torna o código melhor) e, por fim, isso nos expõe aos problemas de requisitos mais cedo.
+ 
+    % Truques de testagem
+    % -   Testagem incompleta
+    % -   Testagem de estruturas básicas
+    % -   Testagem de fluxo de dados
+    % -   Combinação de estados de dados
+    % You can generate many test cases deterministically using basis testing, data- flow analysis, boundary analysis, classes of bad data, and classes of good data. You can generate additional test cases with error guessing.
+    Para, enfim, testarmos, ter alguns truques de testagem no bolso pode ser bem útil, até porque, em sistemas reais, é impossível testar todas as possibilidades. O primeiro truque é a Testagem incompleta (remover testes que não acrescentem nada de novo). Outros truques importante são a Testagem de estruturas básicas (testar cada \tit{statement} pelo menos uma vez, criando uma cobertura lógica sobre os caminhos com o mínimo conjunto de casos), a Testagem de Fluxo de dados (testar os estados das variáveis já que pelo menos metade do código consiste em declaração e inicializações de dados), a Combinação de estados de dados (a combinação normal de estados de dados é que uma variável é definida, usada uma ou mais vezes e talvez eliminada), o Particionamento Equivalente (formalização da ideia de que se dois testes são equivalentes, ou seja, testam os mesmos tipo de erro, é necessário só um deles), a Adivinhação de erros (criar testes com base na intuição e em empirismos), a Análise de Limites (teste de condições de limites mínimos e máximos), a Análise de Limites compostos (teste de limites de combinações de variáveis), Testagem de Dados Ruins (conjuntos de dados ruins a serem testados incluem poucos dados ou ausência de dados, excesso de dados, tipos errados de dados ou dados inválidos, dados de tamanhos errados, ou dados não inicializados) e Testagem de Dados Bons (incluem dados nominais, isto é, valores esperados, configuração mínima normal, configuração máxima normal e compatibilidade com dados antigos).
+    
+    % Erros Típicos
+    % Ferramentas de suporte à testes
+    Os erros tendem a se aglomerar em algumas classes e rotinas sujeitas a erros, portanto é importante encontrar esses trechos de código, redesenhá-los e reescrevê-los. Ademais, os testes de dados tendem a ter uma densidade maior de erros do que o código propriamente que está sendo testado e estes tendem a ser mais graves que os erros de programação, dado que buscar esses erros demandam muito tempo que não é utilizado para o aperfeiçoamento do código. Assim é muito importante desenvolver os testes tão cuidadosamente quanto o código.
+    
+    Em geral, testes automatizados são úteis e essenciais para testes de regressão, e, em longo prazo, a melhor forma de melhorar o processo de testes é fazê-lo de forma regular, mensurá-lo e usar o que foi aprendido para aprimorá-lo.
+    
+    
+    %  Testing by the developer is a key part of a full testing strategy. Independent testing is also important but is outside the scope of this book.
+% ? Writing test cases before the code takes the same amount of time and effort as writing the test cases after the code, but it shortens defect-detection- debug-correction cycles.
+% ? Even considering the numerous kinds of testing available, testing is only one part of a good software-quality program. High-quality development
+% methods, including minimizing defects in requirements and design, are at least as important. Collaborative development practices are also at least as effective at detecting errors as testing and detect different kinds of errors.
+% ? You can generate many test cases deterministically using basis testing, data- flow analysis, boundary analysis, classes of bad data, and classes of good data. You can generate additional test cases with error guessing.
+% ? Errors tend to cluster in a few error-prone classes and routines. Find that error-prone code, redesign it, and rewrite it.
+% ? Test data tends to have a higher error density than the code being tested. Because hunting for such errors wastes time without improving the code,
+% test-data errors are more aggravating than programming errors. Avoid them by developing your tests as carefully as your code.
+% ? Automated testing is useful in general and essential for regression testing. ? In the long run, the best way to improve your testing process is to make it
+% regular, measure it, and use what you learn to improve it.
+    
+    
+\end{document}

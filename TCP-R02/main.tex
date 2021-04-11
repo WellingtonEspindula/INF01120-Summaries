@@ -1,0 +1,53 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{legalpaper, a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm}
+\setlength{\voffset}{-10mm}
+
+
+
+\title{Modularidade}
+\author{Wellington Espindula}
+\date{Setembro de 2020}
+
+\begin{document}
+    \maketitle
+    O presente capítulo trata sobre modularidade, um conceito chave para assegurar dois conceitos de extrema importância para a qualidade de um \textit{software}: a \textbf{extensibilidade} e a \textbf{reusabilidade}.
+    Se o método de construção de um \textit{software} é modular, então isso propiciará aos designers do sistema a produção de \textit{softwares} com elementos mais autônomos conectados entre si por estruturas mais simples e coerentes.
+    Entretanto, quando nós pensamos em modularidade, tende-se a se pensar na quebra de um programa em funções/métodos - isto é, escrever um programa em pequenos pedaços que usualmente são sub-rotinas.
+    Porém apenas esse uso da modularidade não traz benefícios reais para a extensibilidade e reusabilidade.
+    Dessa forma, o capítulo apresenta \textbf{5 critérios}, \textbf{5 regras} e \textbf{5 princípios} da modularidade que cobrem os requisitos mais importantes em um método de design de sistema modular.
+    
+    
+   % ---------- CRITÉRIOS -------------
+    \paragraph{Dos Critérios:} 
+    \textbf{\textit{(i)} Decomponibilidade: }Decompor um \textit{software} em um número pequeno de subproblemas menos complexos conectador por uma estrutura simples e suficientemente independente para trabalhar separadamente em cada um deles. Para isso, traz-se a ideia de \textit{design \textbf{top-down}}: começar pela descrição mais abstrata da funcionalidade do sistema e refinar essa visão em subsistemas mais simples até restar elementos que estão em um nível de abstração baixo o suficiente para serem implementados diretamente;
+    \textbf{\textit{(ii)} Componibilidade: }Habilidade de se combinar livremente os componentes do \textit{software} já existentes para produzir novos sistemas, possibilitando a criação de ambientes novos diferentes dos quais o sistema foi inicialmente desenvolvido. A componibilidade trabalha a visão do sistema de forma \textit{\textbf{bottom-up}}. Assim a componibilidade e a decomponibilidade trabalham de forma \textbf{dialética}, por mais que opostas, sua união forma uma síntese elementar para o processo de \textit{design} de um software;
+    \textbf{\textit{(iii)} Entendimento modular: }Entender um módulo sem ter que ler os demais, ou, no máximo, com a necessidade de examinar um pouco estes. Isto é, um método dificilmente pode ser chamado de modular se o leitor do \textit{software} é incapaz de ler cada elemento separadamente;
+    \textbf{\textit{(iv)} Continuidade modular: }Habilidade de uma pequena mudança na especificação de um \textit{software} gerar mudanças em um único módulo ou em um pequeno número de módulos. Desse modo, esse critério é diretamente ligado ao objetivo de extensibilidade de \textit{software};
+    \textbf{\textit{(v)} Proteção Modular:} A ideia da proteção modular é prevenir a propagação de efeitos anormais, tais como falhas e erros em tempo de execução, para outro módulo ou para outros módulos vizinhos.
+    
+   % ---------- REGRAS -------------
+    \paragraph{Das Regras:} 
+    \textbf{\textit{(i)} Mapeamento Direto: } Um sistema modular deve se manter compatível com qualquer módulo estrutural projetado no processo de modelagem do domínio do problema. Essa regra tem relação com dois princípios já vistos: continuidade e decomponibilidade.
+    \textbf{\textit{(ii)} Poucas interfaces: } Todo o módulo deve se comunicar o mínimo possível com os demais.
+    \textbf{\textit{(iii)} Interfaces pequenas (baixo acoplamento): } Dois módulos que se comunicam, devem trocar o mínimo de informações possíveis. Essa regra tem associação aos princípios de continuidade e proteção.
+    \textbf{\textit{(iv)} Interfaces explícitas: } A comunicação entre dois módulos deve ser óbvia do ponto de vista dos módulos envolvidos. Essa regra tem como princípios os critérios de decomponibilidade/componibilidade continuidade e entendimento.
+    \textbf{\textit{(v)} Esconder informações: } O designer de cada módulo deve selecionar as informações oficiais sobre o módulo para ser disponibilizado para os autores dos módulos clientes.
+    
+
+   % ---------- PRINCÍPIOS ------------
+    \paragraph{Dos Princípios:} 
+    \textbf{\textit{(i)} O princípio de unidades modulares linguísticas: }Módulos devem corresponder a unidades sintáticas na linguagem utilizada. Isto é, o formalismo usado para descrever o \textit{software} em seus diferentes níveis deve ser suportar uma visão de modularidade embutida.
+    \textbf{\textit{(ii)} O princípio da auto-documentação: } O designer de um médulo devem se empenhar em tornar todas as informações sobre um módulo parte do próprio módulo.
+    \textbf{\textit{(iii)} O princípio do acesso uniforme: } Os serviços oferecidos por um módulo devem ser disponibilizados por uma notação uniforme. 
+    \textbf{\textit{(iv)} O princípio aberto-fechado: } Um módulo deve estar aberto caso seja extensível mas deve estar fechado quando for disponibilizado para ser utilizado por outros módulos.
+    \textbf{\textit{(v)} O princípio de escolha única: } Sempre que seja necessário para um sistema suportar uma série de variantes, somente um módulo do sistema deverá ter conhecimento da lista exaustiva de variantes. A importância desse princípio está em proteger a estrutura do software contra os efeitos do suporte para novas extensões de \textit{software}. Nesse princípio se baseiam a ideia de \textbf{polimorfismo e ligação dinâmica}. Assim sempre que um módulo é estendido, os módulos clientes não precisam se preocupar com modificar seu sistema para suportar essas alterações (por exemplo, adicionando mais condicionais).
+    
+    
+    
+\end{document}

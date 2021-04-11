@@ -1,0 +1,61 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{indentfirst}
+\usepackage[portuguese]{babel}
+\usepackage{geometry}
+\geometry{legalpaper, a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm}
+\setlength{\voffset}{-10mm}
+
+\newcommand{\tit}[1]{\textit{#1}}
+\newcommand{\tb}[1]{\textbf{#1}}
+
+\newcommand{\sw}{\tit{software}}
+\newcommand{\bitem}[1]{\tb{(\tit{#1})}}
+\newcommand{\iitem}[1]{(\tit{#1})}
+
+\newcommand{\oo}{orientação à objetos}
+
+
+
+\title{Rumo à Tecnologia de Objetos}
+\author{Wellington Espindula}
+\date{Setembro de 2020}
+
+\begin{document}
+    \maketitle
+    
+    O capítulo 5 (\tit{Towards object technology}) traz diversos argumentos para basear a ideia de uso de orientação à objetos em projetos e no desenvolvimento de \sw. Para isso, vale-se dos objetivos (das qualidades de \sw) previamente estudadas - Extensibilidade, Reusabilidade, Confiabilidade, etc. Para satisfazer tais condições, faz-se necessário o uso de um método sistemático para decompor o sistema em módulos.
+    Dessa forma, a POO (Programação Orientada à Objetos) nos fornece a ideia de construir cada módulo como um tipo de objeto. 
+    % Embora normalmente possa se pensar que a batalha foi ganha para a orientação à objetos, é sempre necessário racionalizar os usos a fim de sempre fazer os melhores usos das metodologias e assim por diante.
+    
+    Existem três tipos básicos de forças que performam quando executamos um sistema computacional: \iitem{i} ação (operação que está sendo realizada); \iitem{ii} processador (dispositivo que executa instruções); e \iitem{iii} objeto (estrutura de dados nas quais as ações serão realizadas). Como esse capítulo não visou trabalhar processamento concorrente, isso torna a visão mais limitada em ações e objetos. Essas duas forças formam uma dualidade (o que um sistema faz vs. ao que ou à quem o sistema realiza ações).
+    
+    Então, qual o critério apropriado para se mapear os módulos de um sistema? Tradicionalmente se constrói os módulos usando uma forma de decomposição das funções do sistema, em pedaços de ações. A ideia de caracterizar um \sw \ apenas por uma função/funcionalidade é problemática. Sistemas reais normalmente tem mais de um "topo" e é descrita por uma séries de serviços. Ademais, sistemas que, mesmo tendo uma função original pré-estabelecida, durante seu ciclo de vida, podem aderir mais funcionalidades e tornar outras funcionalidades tão importantes ou mais importantes quanto à função original - em alguns casos, a função original do sistema pode até mesmo desaparecer. 
+    
+    Desse modo, a reusabilidade do \sw \ nesse modelo também acaba sendo comprometida, visto que a cada refinamento de uma função do \sw \ construída, deve ser reavaliada todas as cláusulas e, sendo assim, cria mais especificações, dificultando a escrita de novas funcionalidades e desencorajando, consequentemente, a generalidade. Por fim, nota-se que o design \tit{top-down} pode até vir a ser útil na construção de pequenos programas ou algoritmos, mas que não se escala na prática para um \sw \ grande, trazendo uma inflexibilidade à longo prazo.
+   
+    Em contrapartida à decomposição (design \tit{top-down}), a \oo \ traz como ponto chave do sistema a modularização baseada nas qualidades definidas anteriormente, em particular extensibilidade, reusabilidade e compatibilidade. Dessa forma, a noção de tipo abstrato de dados nos dará na definição dos objetos um local apropriado para reservar as funções. 
+    
+    Por conseguinte, o lema maior da \oo \ seria: Não pergunte ao sistema o que ele faz; mas, sim, pergunte à quem/ao que ele faz. Logo, faz sentido começarmos a analisar o sistema pelos objetos do mesmo, realizando um processo de construção \tit{bottom-up} de robustas e extensíveis soluções para as partes dos problemas. Dessa forma, combinando estas diferentes soluções devemos gerar combinações cada vez mais poderosas, que devem ser gerais o suficientes para gerar novos subprodutos, e, por consequência, criando soluções até para problemas futuros.
+    
+    Para fazer uso da \oo, então, devemos descrever os tipos e os objetos. Para tanto, devemos nos guiar pelas seguintes questões: \iitem{i} a necessidade de prover uma descrição independente da representação, a fim de obter máxima abstração; \iitem{ii} a necessidade de reinserir funções dando-lhes seu devido lugar nas arquiteturas de \sw \ cuja decomponibilidade é baseada na análise de tipos de objetos, afinal, devemos acomodar ambos aspectos da dualidade objeto-função. Por fim, é necessário descrever as relação na arquitetura do \sw, para tanto existem duas relações fundamentais na \oo: \iitem{i} cliente: Sendo \tb{\tit{B}} cliente de \tb{\tit{A}}, todo o objeto \tb{\tit{B}} contém informações do objeto de tipo \tb{\tit{A}}; \iitem{ii} herança: Se  \tb{\tit{B}} é herdeiro de \tb{\tit{A}}, \tb{\tit{B}} denota uma versão especializada de \tb{\tit{A}}.
+   
+
+    % The case for using objects (or more precisely, as seen below, object types) as the key to system modularization is based on the quality aims defined in chapter 1, in particular extendibility, reusability and compatibility.
+   
+    % OBJECT MOTTO
+    % Ask not first what the system does: Ask what it does it to!
+    
+    
+% • It is preferable not to pay too much attention to ordering constraints during the early stages of system analysis and design. Many temporal constraints can be described more abstractly as logical constraints.
+% • Top-down functional design is not appropriate for the long-term view of software systems, which involves change and reuse.
+% • Object-oriented software construction bases the structure of systems on the types of objects they manipulate.
+% • In object-oriented design, the primary design issue is not what the system does, but what types of objects it does it to. The design process defers to the last steps the decision as to what is the topmost function, if any, of the system.
+% • To satisfy the requirements of extendibility and reusability, object-oriented software construction needs to deduce the architecture from sufficiently abstract descriptions of objects.
+% • Two kinds of relation may exist between object types: client and inheritance.
+    
+\end{document}
